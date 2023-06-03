@@ -7,7 +7,7 @@ Content-Type: application/json
   "account_pwd": "1234",
   "account_name": "정승우",
   "account_email": "tkdltlf@naver.com",
-  "account_status": "활동"
+  "account_status": "가입"
 }
 
 ###
@@ -22,7 +22,7 @@ GET http://localhost:8080/account/tkdltlf
 
 
 ###
-POST http://localhost:8080/account/tkdltlf/부재
+POST http://localhost:8080/account/tkdltlf/휴면
 
 
 ###
