@@ -4,6 +4,8 @@ package com.example.springboot.Account.service;
 import com.example.springboot.Account.entity.Accounts;
 import com.example.springboot.Account.repository.AccountRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.*;
 
 @Service
@@ -16,6 +18,7 @@ public class AccountService {
         this.accountRepository = accountRepository;
     }
 
+    @Transactional
     public Accounts createAccount(Accounts account){
         return accountRepository.save(account);
     }

@@ -8,16 +8,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+@Entity(name = "Accounts")
 @Getter
 @Setter
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Accounts {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     String account_id;
 
     String account_pwd;
