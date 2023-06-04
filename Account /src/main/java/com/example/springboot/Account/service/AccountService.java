@@ -1,6 +1,7 @@
 package com.example.springboot.Account.service;
 
 
+import com.example.springboot.Account.Status;
 import com.example.springboot.Account.entity.Accounts;
 import com.example.springboot.Account.repository.AccountRepository;
 import org.springframework.stereotype.Service;
@@ -31,9 +32,10 @@ public class AccountService {
         return  accountRepository.findById(id).orElseThrow(() -> new RuntimeException(id+"존재하지 않음"));
     }
 
-    public Accounts updateStatus(String id, String status){
+    public Accounts updateStatus(String id, String data){
         Accounts account = accountRepository.findById(id).orElseThrow(() -> new RuntimeException(id+"존재하지 않음"));
-        account.setAccount_status(status);
+        Status status = Status.valueOf(data);
+        account.setAccount_status(status.getName());
         return  accountRepository.save(account);
     }
     public void deleteAccount(String id){
