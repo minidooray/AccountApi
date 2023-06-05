@@ -19,7 +19,7 @@ GET http://localhost:8080/account/by/tkdltlf@naver.com
 
 
 ###
-GET http://localhost:8080/account/tkdltlf
+GET http://localhost:8080/account/tkdltlf3
 
 
 
@@ -29,3 +29,5 @@ POST http://localhost:8080/account/tkdltlf3/withdrawal
 
 ###
 DELETE http://localhost:8080/account/admin
+
+

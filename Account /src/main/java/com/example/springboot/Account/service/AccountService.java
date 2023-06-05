@@ -7,6 +7,7 @@ import com.example.springboot.Account.repository.AccountRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.*;
 
 @Service
@@ -29,7 +30,11 @@ public class AccountService {
     }
 
     public Accounts getAccount(String id){
-        return  accountRepository.findById(id).orElseThrow(() -> new RuntimeException(id+"존재하지 않음"));
+        LocalDate localDate = LocalDate.now();
+        Accounts account = accountRepository.findById(id).orElseThrow(() -> new RuntimeException(id+"존재하지 않음"));
+        account.setAccountAccessAt(localDate);
+        return accountRepository.save(account);
+
     }
 
 
@@ -46,6 +51,8 @@ public class AccountService {
     public void deleteAccount(String id){
         accountRepository.deleteById(id);
     }
+
+
 
 
 }

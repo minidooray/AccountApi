@@ -4,6 +4,7 @@ package com.example.springboot.Account.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity(name = "Accounts")
 @Getter
@@ -29,4 +30,7 @@ public class Accounts {
 
     @Column(name = "account_status")
     String accountStatus;
+
+    @Column(name = "account_access_at")
+    LocalDate accountAccessAt;
 }
