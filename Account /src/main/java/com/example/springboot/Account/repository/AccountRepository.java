@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 
+@Transactional
 public interface AccountRepository extends JpaRepository<Accounts,String> {
 
 

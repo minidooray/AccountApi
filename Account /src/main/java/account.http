@@ -2,11 +2,11 @@ POST http://localhost:8080/account
 Content-Type: application/json
 
 {
-  "account_id": "tkdltlf",
-  "account_pwd": "1234",
-  "account_name": "정승우",
-  "account_email": "tkdltlf@naver.com",
-  "account_status": "가입"
+  "accountId": "admin",
+  "accountPwd": "1234",
+  "accountName": "정승우",
+  "accountEmail": "tkdltlf@naver.com",
+  "accountStatus": "가입"
 }
 
 ###
@@ -24,8 +24,8 @@ GET http://localhost:8080/account/tkdltlf
 
 
 ###
-POST http://localhost:8080/account/tkdltlf/Subscription
+POST http://localhost:8080/account/tkdltlf3/withdrawal
 
 
 ###
-DELETE http://localhost:8080/account/tkdltlf
+DELETE http://localhost:8080/account/admin

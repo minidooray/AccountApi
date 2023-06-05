@@ -15,6 +15,7 @@ import javax.persistence.*;
 public class Accounts {
 
     @Id
+    @Column(name = "account_id")
     String accountId;
 
     @Column(name = "account_pwd")
