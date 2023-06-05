@@ -32,10 +32,15 @@ public class AccountService {
         return  accountRepository.findById(id).orElseThrow(() -> new RuntimeException(id+"존재하지 않음"));
     }
 
+
+    public Accounts getAccountbyEmail(String email){
+        return  accountRepository.findByAccountEmail(email).orElseThrow(() -> new RuntimeException(email+"존재하지 않음"));
+    }
+
     public Accounts updateStatus(String id, String data){
         Accounts account = accountRepository.findById(id).orElseThrow(() -> new RuntimeException(id+"존재하지 않음"));
         Status status = Status.valueOf(data);
-        account.setAccount_status(status.getName());
+        account.setAccountStatus(status.getName());
         return  accountRepository.save(account);
     }
     public void deleteAccount(String id){

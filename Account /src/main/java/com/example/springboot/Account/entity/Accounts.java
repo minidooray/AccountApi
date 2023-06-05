@@ -3,10 +3,7 @@ package com.example.springboot.Account.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity(name = "Accounts")
 @Getter
@@ -18,13 +15,17 @@ import javax.persistence.Id;
 public class Accounts {
 
     @Id
-    String account_id;
+    String accountId;
 
-    String account_pwd;
+    @Column(name = "account_pwd")
+    String accountPwd;
 
-    String account_name;
+    @Column(name = "account_name")
+    String accountName;
 
-    String account_email;
+    @Column(name = "account_email")
+    String accountEmail;
 
-    String account_status;
+    @Column(name = "account_status")
+    String accountStatus;
 }

@@ -39,6 +39,11 @@ public class AccountRestController {
         return accountService.updateStatus(id,status);
     }
 
+    @GetMapping("/by/{email}")
+    public Accounts getAccountByEmail(@PathVariable String email){
+        return accountService.getAccountbyEmail(email);
+    }
+
     @DeleteMapping("/{id}")
     public ResultDTO deleteAccount(@PathVariable String id){
         accountService.deleteAccount(id);

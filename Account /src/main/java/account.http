@@ -14,12 +14,17 @@ GET http://localhost:8080/account
 
 
 ###
+GET http://localhost:8080/account/by/tkdltlf@naver.com
+
+
+
+###
 GET http://localhost:8080/account/tkdltlf
 
 
 
 ###
-POST http://localhost:8080/account/tkdltlf/dormancy
+POST http://localhost:8080/account/tkdltlf/Subscription
 
 
 ###
