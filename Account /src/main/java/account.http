@@ -10,7 +10,7 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:8080/account
+GET http://localhost:8081/account
 
 
 ###
@@ -28,6 +28,6 @@ POST http://localhost:8080/account/tkdltlf3/withdrawal
 
 
 ###
-DELETE http://localhost:8080/account/admin
+DELETE http://localhost:8080/account/tkdltlf3
 
 

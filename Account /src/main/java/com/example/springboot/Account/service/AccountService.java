@@ -39,7 +39,7 @@ public class AccountService {
 
 
     public Accounts getAccountbyEmail(String email){
-        return  accountRepository.findByAccountEmail(email).orElseThrow(() -> new RuntimeException(email+"존재하지 않음"));
+        return  accountRepository.findByAccountEmail(email).orElseGet(() -> new Accounts(null,null,null,null,null,null));
     }
 
     public Accounts updateStatus(String id, String data){
