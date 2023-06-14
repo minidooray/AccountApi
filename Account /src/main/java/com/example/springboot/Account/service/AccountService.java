@@ -12,6 +12,7 @@ import java.time.LocalDate;
 import java.util.*;
 
 @Service
+@Transactional
 public class AccountService {
 
     private final AccountRepository accountRepository;
@@ -21,7 +22,7 @@ public class AccountService {
         this.accountRepository = accountRepository;
     }
 
-    @Transactional
+
     public AccountsDTO createAccount(Accounts account){
         Accounts accounts = accountRepository.save(account);
         AccountsDTO accountsDTO = AccountsDTO.builder()
@@ -35,6 +36,7 @@ public class AccountService {
         return accountsDTO;
     }
 
+    @Transactional(readOnly = true)
     public List<AccountsDTO> getAccounts(){
         List<Accounts> accountsList =  accountRepository.findAll();
         List<AccountsDTO> accountsDTOList = new ArrayList<>();
@@ -52,24 +54,34 @@ public class AccountService {
         return accountsDTOList;
     }
 
+    @Transactional(readOnly = true)
     public AccountsDTO getAccount(String id){
         LocalDate localDate = LocalDate.now();
         Accounts accounts = accountRepository.findById(id).orElseThrow(() -> new RuntimeException(id+"존재하지 않음"));
-        accounts.setAccountAccessAt(localDate);
-        accountRepository.save(accounts);
+
         AccountsDTO accountsDTO = AccountsDTO.builder()
                 .accountId(accounts.getAccountId())
                 .accountName(accounts.getAccountName())
                 .accountPwd(accounts.getAccountPwd())
                 .accountEmail(accounts.getAccountEmail())
                 .accountStatus(accounts.getAccountStatus())
-                .accountAccessAt(accounts.getAccountAccessAt())
+                .accountAccessAt(localDate)
                 .build();
+
+        Accounts accounts1 = Accounts.builder()
+                .accountId(accountsDTO.getAccountId())
+                .accountPwd(accountsDTO.getAccountPwd())
+                .accountName(accountsDTO.getAccountName())
+                .accountStatus(accountsDTO.getAccountStatus())
+                .accountEmail(accountsDTO.getAccountEmail())
+                .accountAccessAt(accountsDTO.getAccountAccessAt())
+                .build();
+        accountRepository.save(accounts1);
         return accountsDTO;
 
     }
 
-
+    @Transactional(readOnly = true)
     public AccountsDTO getAccountbyEmail(String email){
         Accounts accounts = accountRepository.findByAccountEmail(email).orElseGet(() -> new Accounts(null,null,null,null,null,null));
         AccountsDTO accountsDTO = AccountsDTO.builder()
@@ -87,17 +99,26 @@ public class AccountService {
     public AccountsDTO updateStatus(String id, String data){
         Accounts accounts = accountRepository.findById(id).orElseThrow(() -> new RuntimeException(id+"존재하지 않음"));
         Status status = Status.valueOf(data);
-        accounts.setAccountStatus(status.getName());
-        accountRepository.save(accounts);
 
         AccountsDTO accountsDTO = AccountsDTO.builder()
                 .accountId(accounts.getAccountId())
                 .accountName(accounts.getAccountName())
                 .accountPwd(accounts.getAccountPwd())
                 .accountEmail(accounts.getAccountEmail())
-                .accountStatus(accounts.getAccountStatus())
+                .accountStatus(status.getName())
                 .accountAccessAt(accounts.getAccountAccessAt())
                 .build();
+
+        Accounts accounts1 = Accounts.builder()
+                .accountId(accountsDTO.getAccountId())
+                .accountPwd(accountsDTO.getAccountPwd())
+                .accountName(accountsDTO.getAccountName())
+                .accountStatus(accountsDTO.getAccountStatus())
+                .accountEmail(accountsDTO.getAccountEmail())
+                .accountAccessAt(accountsDTO.getAccountAccessAt())
+                .build();
+        accountRepository.save(accounts);
+
         return accountsDTO;
     }
     public void deleteAccount(String id){

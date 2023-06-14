@@ -19,15 +19,15 @@ GET http://localhost:8081/account/by/ehdjs9583@naver.com
 
 
 ###
-GET http://localhost:8080/account/tkdltlf3
+GET http://localhost:8081/account/tkdltlf4
 
 
 
 ###
-POST http://localhost:8080/account/tkdltlf3/withdrawal
+POST http://localhost:8081/account/tkdltlf4/dormancy
 
 
 ###
-DELETE http://localhost:8080/account/tkdltlf3
+DELETE http://localhost:8081/account/admin
 
 

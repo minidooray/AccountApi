@@ -8,7 +8,6 @@ import java.time.LocalDate;
 
 @Entity(name = "Accounts")
 @Getter
-@Setter
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
