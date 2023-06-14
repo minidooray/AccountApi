@@ -14,7 +14,7 @@ GET http://localhost:8081/account
 
 
 ###
-GET http://localhost:8080/account/by/tkdltlf@naver.com
+GET http://localhost:8081/account/by/ehdjs9583@naver.com
 
 
 

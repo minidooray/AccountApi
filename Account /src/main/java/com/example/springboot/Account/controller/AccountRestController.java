@@ -1,6 +1,7 @@
 package com.example.springboot.Account.controller;
 
 
+import com.example.springboot.Account.domain.AccountsDTO;
 import com.example.springboot.Account.domain.ResultDTO;
 import com.example.springboot.Account.entity.Accounts;
 import com.example.springboot.Account.service.AccountService;
@@ -21,28 +22,28 @@ public class AccountRestController {
 
 
     @GetMapping
-    public ResponseEntity<List<Accounts>>  getAccounts(){
+    public ResponseEntity<List<AccountsDTO>>  getAccounts(){
 
         return ResponseEntity.ok(accountService.getAccounts());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Accounts>  getAccount(@PathVariable String id){
+    public ResponseEntity<AccountsDTO>  getAccount(@PathVariable String id){
         return ResponseEntity.ok(accountService.getAccount(id));
     }
 
     @PostMapping
-    public ResponseEntity<Accounts> createAccount(@RequestBody Accounts account){
+    public ResponseEntity<AccountsDTO> createAccount(@RequestBody Accounts account){
         return ResponseEntity.ok(accountService.createAccount(account));
     }
 
     @PostMapping("/{id}/{status}")
-    public ResponseEntity<Accounts>  updateAccountStatus(@PathVariable String id, @PathVariable String status){
+    public ResponseEntity<AccountsDTO>  updateAccountStatus(@PathVariable String id, @PathVariable String status){
         return ResponseEntity.ok(accountService.updateStatus(id,status));
     }
 
     @GetMapping("/by/{email}")
-    public ResponseEntity<Accounts> getAccountByEmail(@PathVariable String email){
+    public ResponseEntity<AccountsDTO> getAccountByEmail(@PathVariable String email){
         return ResponseEntity.ok(accountService.getAccountbyEmail(email));
     }
 
