@@ -1,10 +1,10 @@
-package com.example.springboot.Account.service;
+package com.example.springboot.account.service;
 
 
-import com.example.springboot.Account.Status;
-import com.example.springboot.Account.domain.AccountsDTO;
-import com.example.springboot.Account.entity.Accounts;
-import com.example.springboot.Account.repository.AccountRepository;
+import com.example.springboot.account.Status;
+import com.example.springboot.account.domain.AccountsDTO;
+import com.example.springboot.account.entity.Accounts;
+import com.example.springboot.account.repository.AccountRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,16 +23,19 @@ public class AccountService {
     }
 
 
-    public AccountsDTO createAccount(Accounts account){
-        Accounts accounts = accountRepository.save(account);
-        AccountsDTO accountsDTO = AccountsDTO.builder()
-                .accountId(accounts.getAccountId())
-                .accountName(accounts.getAccountName())
-                .accountPwd(accounts.getAccountPwd())
-                .accountEmail(accounts.getAccountEmail())
-                .accountStatus(accounts.getAccountStatus())
-                .accountAccessAt(accounts.getAccountAccessAt())
+    public AccountsDTO createAccount(AccountsDTO accountsDTO){
+
+        Accounts account = Accounts.builder()
+                .accountId(accountsDTO.getAccountId())
+                .accountPwd(accountsDTO.getAccountPwd())
+                .accountName(accountsDTO.getAccountName())
+                .accountStatus(Status.Subscription.getName())
+                .accountEmail(accountsDTO.getAccountEmail())
+                .accountAccessAt(LocalDate.now())
                 .build();
+
+         accountRepository.save(account);
+
         return accountsDTO;
     }
 
@@ -84,6 +87,7 @@ public class AccountService {
     @Transactional(readOnly = true)
     public AccountsDTO getAccountbyEmail(String email){
         Accounts accounts = accountRepository.findByAccountEmail(email).orElseGet(() -> new Accounts(null,null,null,null,null,null));
+
         AccountsDTO accountsDTO = AccountsDTO.builder()
                 .accountId(accounts.getAccountId())
                 .accountName(accounts.getAccountName())
@@ -109,14 +113,6 @@ public class AccountService {
                 .accountAccessAt(accounts.getAccountAccessAt())
                 .build();
 
-        Accounts accounts1 = Accounts.builder()
-                .accountId(accountsDTO.getAccountId())
-                .accountPwd(accountsDTO.getAccountPwd())
-                .accountName(accountsDTO.getAccountName())
-                .accountStatus(accountsDTO.getAccountStatus())
-                .accountEmail(accountsDTO.getAccountEmail())
-                .accountAccessAt(accountsDTO.getAccountAccessAt())
-                .build();
         accountRepository.save(accounts);
 
         return accountsDTO;

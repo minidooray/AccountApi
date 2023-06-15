@@ -1,4 +1,4 @@
-package com.example.springboot.Account.entity;
+package com.example.springboot.account.entity;
 
 
 import lombok.*;
@@ -8,7 +8,6 @@ import java.time.LocalDate;
 
 @Entity(name = "Accounts")
 @Getter
-@EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder

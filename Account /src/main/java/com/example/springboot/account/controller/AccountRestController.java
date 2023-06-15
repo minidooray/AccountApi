@@ -1,10 +1,9 @@
-package com.example.springboot.Account.controller;
+package com.example.springboot.account.controller;
 
 
-import com.example.springboot.Account.domain.AccountsDTO;
-import com.example.springboot.Account.domain.ResultDTO;
-import com.example.springboot.Account.entity.Accounts;
-import com.example.springboot.Account.service.AccountService;
+import com.example.springboot.account.domain.AccountsDTO;
+import com.example.springboot.account.domain.ResultDTO;
+import com.example.springboot.account.service.AccountService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,7 +32,7 @@ public class AccountRestController {
     }
 
     @PostMapping
-    public ResponseEntity<AccountsDTO> createAccount(@RequestBody Accounts account){
+    public ResponseEntity<AccountsDTO> createAccount(@RequestBody AccountsDTO account){
         return ResponseEntity.ok(accountService.createAccount(account));
     }
 

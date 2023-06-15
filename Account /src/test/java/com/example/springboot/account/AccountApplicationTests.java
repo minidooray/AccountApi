@@ -1,4 +1,4 @@
-package com.example.springboot.Account;
+package com.example.springboot.account;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

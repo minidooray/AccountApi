@@ -1,4 +1,4 @@
-package com.example.springboot.Account;
+package com.example.springboot.account;
 
 public enum Status {
 

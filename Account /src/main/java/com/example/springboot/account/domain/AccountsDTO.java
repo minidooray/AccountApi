@@ -1,15 +1,13 @@
-package com.example.springboot.Account.domain;
+package com.example.springboot.account.domain;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.Getter;
+import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
 import java.time.LocalDate;
 
 @Builder
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class AccountsDTO {
     String accountId;
     String accountPwd;
